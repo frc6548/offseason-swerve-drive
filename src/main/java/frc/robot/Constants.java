@@ -30,15 +30,16 @@ public final class Constants {
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
 
-        public static final int kFrontLeftDriveMotorPort = 8;
-        public static final int kBackLeftDriveMotorPort = 2;
-        public static final int kFrontRightDriveMotorPort = 6;
-        public static final int kBackRightDriveMotorPort = 4;
+        // CAN ports that are defined in our actual robot code
+        public static final int kFrontLeftDriveMotorPort = 0;
+        public static final int kBackLeftDriveMotorPort = 0;
+        public static final int kFrontRightDriveMotorPort = 0;
+        public static final int kBackRightDriveMotorPort = 0;
 
-        public static final int kFrontLeftTurningMotorPort = 7;
-        public static final int kBackLeftTurningMotorPort = 1;
-        public static final int kFrontRightTurningMotorPort = 5;
-        public static final int kBackRightTurningMotorPort = 3;
+        public static final int kFrontLeftTurningMotorPort = 0;
+        public static final int kBackLeftTurningMotorPort = 0;
+        public static final int kFrontRightTurningMotorPort = 0;
+        public static final int kBackRightTurningMotorPort = 0;
 
         public static final boolean kFrontLeftTurningEncoderReversed = true;
         public static final boolean kBackLeftTurningEncoderReversed = true;

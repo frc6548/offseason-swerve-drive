@@ -47,8 +47,8 @@ public class SwerveSubsystem extends SubsystemBase {
             DriveConstants.kBackRightDriveAbsoluteEncoderOffsetRad,
             DriveConstants.kBackRightDriveAbsoluteEncoderReversed);
 
-
-     private final PigeonIMU m_pigeon = new PigeonIMU(13);
+    // get heading of gyroscope and convert rotation to 360 degrees from continous
+    private final PigeonIMU m_pigeon = new PigeonIMU(13);
     private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics,
             new Rotation2d(0));
 

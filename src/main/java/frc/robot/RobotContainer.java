@@ -44,13 +44,15 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        // 1. Create trajectory settings
+
+        // EXAMPLE TRAJECTORY
+        // Create trajectory settings
         TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
                 AutoConstants.kMaxSpeedMetersPerSecond,
                 AutoConstants.kMaxAccelerationMetersPerSecondSquared)
                         .setKinematics(DriveConstants.kDriveKinematics);
 
-        // 2. Generate trajectory
+        // Generate trajectory
         Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
                 new Pose2d(0, 0, new Rotation2d(0)),
                 List.of(
@@ -59,14 +61,14 @@ public class RobotContainer {
                 new Pose2d(2, -1, Rotation2d.fromDegrees(180)),
                 trajectoryConfig);
 
-        // 3. Define PID controllers for tracking trajectory
+        // Define PID controllers for tracking trajectory
         PIDController xController = new PIDController(AutoConstants.kPXController, 0, 0);
         PIDController yController = new PIDController(AutoConstants.kPYController, 0, 0);
         ProfiledPIDController thetaController = new ProfiledPIDController(
                 AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints);
         thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
-        // 4. Construct command to follow trajectory
+        // Construct command to follow trajectory
         SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
                 trajectory,
                 swerveSubsystem::getPose,
@@ -77,7 +79,7 @@ public class RobotContainer {
                 swerveSubsystem::setModuleStates,
                 swerveSubsystem);
 
-        // 5. Add some init and wrap-up, and return everything
+        // Add some init and wrap-up, and return everything
         return new SequentialCommandGroup(
                 new InstantCommand(() -> swerveSubsystem.resetOdometry(trajectory.getInitialPose())),
                 swerveControllerCommand,
