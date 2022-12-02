@@ -30,6 +30,13 @@ public final class Constants {
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
 
+                public static final double kP_X = 0.2;
+                public static final double kD_X = 0;
+                public static final double kP_Y = 0.2;
+                public static final double kD_Y = 0;
+                public static final double kP_Theta = 8;
+                public static final double kD_Theta = 0;
+
         // CAN ports that are defined in our actual robot code
         public static final int kFrontLeftDriveMotorPort = 0;
         public static final int kBackLeftDriveMotorPort = 0;

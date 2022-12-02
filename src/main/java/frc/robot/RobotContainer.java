@@ -46,6 +46,8 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
 
         // EXAMPLE TRAJECTORY
+
+
         // Create trajectory settings
         TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
                 AutoConstants.kMaxSpeedMetersPerSecond,
