@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -11,7 +10,6 @@ import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.Constants.DriveConstants;
 
 public class SwerveSubsystem extends SubsystemBase {
@@ -56,10 +54,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
               private PIDController m_xController = new PIDController(DriveConstants.kP_X, 0, DriveConstants.kD_X);
               private PIDController m_yController = new PIDController(DriveConstants.kP_Y, 0, DriveConstants.kD_Y);
-              private ProfiledPIDController m_turnController = new ProfiledPIDController(
-                  DriveConstants.kP_Theta, 0,
-                  DriveConstants.kD_Theta,
-                  Constants.AutoConstants.kThetaControllerConstraints);
+              private PIDController m_turnController = new PIDController(DriveConstants.kP_Theta, 0, DriveConstants.kD_Theta);
 
     // get heading of gyroscope and convert rotation to 360 degrees from continous
     private final PigeonIMU m_pigeon = new PigeonIMU(13);
@@ -127,7 +122,7 @@ public class SwerveSubsystem extends SubsystemBase {
         return m_yController;
       }
     
-      public ProfiledPIDController getThetaPidController() {
+      public PIDController getThetaPidController() {
         return m_turnController;
       }
 
