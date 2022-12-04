@@ -3,77 +3,106 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.AddressableLED;
+import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 
 public class Robot extends TimedRobot {
-    private Command m_autonomousCommand;
+    private AddressableLED m_led;
+    private AddressableLEDBuffer m_ledBuffer;
 
+    private Command m_autonomousCommand;
     private RobotContainer m_robotContainer;
 
-    // initializes this code on boot
     @Override
     public void robotInit() {
         m_robotContainer = new RobotContainer();
+        
+        m_led = new AddressableLED(0);
+        m_ledBuffer = new AddressableLEDBuffer(60);
+        m_led.setLength(m_ledBuffer.getLength());
+        m_led.setData(m_ledBuffer);
+        m_led.start();
     }
-    // runs every robot packet, no matter the mode
+
     @Override
     public void robotPeriodic() {
         CommandScheduler.getInstance().run();
     }
 
-    // when robot is disabled this code runs
     @Override
     public void disabledInit() {
+        RedLED();
     }
 
     @Override
     public void disabledPeriodic() {
     }
 
-    /**
-     * This autonomous runs the autonomous command selected by your
-     * {@link RobotContainer} class
-     */
     @Override
     public void autonomousInit() {
         m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-        // schedule the autonomous command (example)
         if (m_autonomousCommand != null) {
             m_autonomousCommand.schedule();
+
+            BlueLED();
         }
     }
 
-    // this function is called periodically during autonomous
     @Override
     public void autonomousPeriodic() {
     }
 
     @Override
     public void teleopInit() {
-        // This makes sure that the autonomous stop running when
-        // teleop starts running. If you want the autonomous to
-        // continue until interrupted by another command, remove
-        // this line or comment it out
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
             
-            
+            GreenLED();
         }
     }
 
-    // called during teleoperated control
     @Override
     public void teleopPeriodic() {
     }
 
     @Override
     public void testInit() {
-        // vancels all running commands at the start of test mode
         CommandScheduler.getInstance().cancelAll();
-    }
 
-    //this function is called periodically during test mode
+        WhiteLED();
+    }
+    
     @Override
     public void testPeriodic() {
     }
+
+    public void RedLED() {
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+            m_ledBuffer.setRGB(i, 255, 0, 0);
+            // m_led.setData(m_ledBuffer);
+        }}
+
+    public void GreenLED() {
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+            m_ledBuffer.setRGB(i, 0, 255, 0);
+            // m_led.setData(m_ledBuffer);
+        }}
+
+    public void BlueLED() {
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+            m_ledBuffer.setRGB(i, 0, 0, 255);
+            // m_led.setData(m_ledBuffer);
+        }}
+
+    public void BlackLED() {
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+            m_ledBuffer.setRGB(i, 0, 0, 0);
+            // m_led.setData(m_ledBuffer);
+        }}
+
+    public void WhiteLED() {
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+            m_ledBuffer.setRGB(i, 255, 255, 255);
+            // m_led.setData(m_ledBuffer);
+        }}
 }

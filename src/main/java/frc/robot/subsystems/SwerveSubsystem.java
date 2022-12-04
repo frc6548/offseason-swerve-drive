@@ -99,6 +99,7 @@ public class SwerveSubsystem extends SubsystemBase {
         SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
     }
 
+    // when zero input disable modules
     public void stopModules() {
         frontLeft.stop();
         frontRight.stop();
@@ -106,6 +107,7 @@ public class SwerveSubsystem extends SubsystemBase {
         backRight.stop();
     }
 
+    // standardize wheel speed across modules
     public void setModuleStates(SwerveModuleState[] desiredStates) {
         SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, DriveConstants.kPhysicalMaxSpeedMetersPerSecond);
         frontLeft.setDesiredState(desiredStates[0]);
@@ -114,6 +116,7 @@ public class SwerveSubsystem extends SubsystemBase {
         backRight.setDesiredState(desiredStates[3]);
     }
 
+    // used in pathplanner swerve configuration
     public PIDController getXPidController() {
         return m_xController;
       }

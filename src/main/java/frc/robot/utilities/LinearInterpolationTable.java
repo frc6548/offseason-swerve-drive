@@ -2,7 +2,7 @@ package frc.robot.utilities;
 
 import java.awt.geom.Point2D;
 
-// stolen from frc1706, idk what any of it means tbh
+// originally from frc1706
 
 public class LinearInterpolationTable {
     private double m_maxInput = Double.NEGATIVE_INFINITY;
