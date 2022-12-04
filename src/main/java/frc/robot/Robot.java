@@ -84,30 +84,30 @@ public class Robot extends TimedRobot {
     public void RedLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 255, 0, 0);
-            // m_led.setData(m_ledBuffer);
+            m_led.setData(m_ledBuffer);
         }}
 
     public void GreenLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 255, 0);
-            // m_led.setData(m_ledBuffer);
+            m_led.setData(m_ledBuffer);
         }}
 
     public void BlueLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 0, 255);
-            // m_led.setData(m_ledBuffer);
+            m_led.setData(m_ledBuffer);
         }}
 
     public void BlackLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 0, 0);
-            // m_led.setData(m_ledBuffer);
+            m_led.setData(m_ledBuffer);
         }}
 
     public void WhiteLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 255, 255, 255);
-            // m_led.setData(m_ledBuffer);
+            m_led.setData(m_ledBuffer);
         }}
 }

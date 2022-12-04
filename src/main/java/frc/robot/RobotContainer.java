@@ -19,7 +19,6 @@ public class RobotContainer {
     private final XboxController m_controller = new XboxController(OIConstants.kDriverControllerPort);
 
     private final SendableChooser<Command> m_autoChooser = new SendableChooser<Command>(); 
-    final SwerveSubsystem m_robotDrive = new SwerveSubsystem();
 
     public RobotContainer() {
             
@@ -37,17 +36,17 @@ public class RobotContainer {
         configureButtonBindings();
     }
 
+    private void configureButtonBindings() {
+        new JoystickButton(m_controller, 2).whenPressed(() -> swerveSubsystem.zeroHeading());
+    }
+
     private void initializeAutoChooser() {
         m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0)); 
-        m_autoChooser.addOption("5 Ball Auto No Stop", new FiveBallAutoNoStop(m_robotDrive));
+        m_autoChooser.addOption("5 Ball Auto No Stop", new FiveBallAutoNoStop(swerveSubsystem));
     
         SmartDashboard.putData("Auto Selector", m_autoChooser); 
     
       }
-
-    private void configureButtonBindings() {
-        new JoystickButton(m_controller, 2).whenPressed(() -> swerveSubsystem.zeroHeading());
-    }
 
     public Command getAutonomousCommand() {
         return m_autoChooser.getSelected(); 
