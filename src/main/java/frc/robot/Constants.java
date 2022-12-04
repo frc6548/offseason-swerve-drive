@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 
 public final class Constants {
@@ -37,15 +38,15 @@ public final class Constants {
                 public static final double kD_Theta = 0;
 
         // CAN ports that are defined in our actual robot code
-        public static final int kFrontLeftDriveMotorPort = 0;
-        public static final int kBackLeftDriveMotorPort = 0;
-        public static final int kFrontRightDriveMotorPort = 0;
-        public static final int kBackRightDriveMotorPort = 0;
+        public static final int kFrontLeftDriveMotorPort = 1;
+        public static final int kBackLeftDriveMotorPort = 2;
+        public static final int kFrontRightDriveMotorPort = 3;
+        public static final int kBackRightDriveMotorPort = 4;
 
-        public static final int kFrontLeftTurningMotorPort = 0;
-        public static final int kBackLeftTurningMotorPort = 0;
-        public static final int kFrontRightTurningMotorPort = 0;
-        public static final int kBackRightTurningMotorPort = 0;
+        public static final int kFrontLeftTurningMotorPort = 5;
+        public static final int kBackLeftTurningMotorPort = 6;
+        public static final int kFrontRightTurningMotorPort = 7;
+        public static final int kBackRightTurningMotorPort = 8;
 
         public static final boolean kFrontLeftTurningEncoderReversed = true;
         public static final boolean kBackLeftTurningEncoderReversed = true;
@@ -57,10 +58,10 @@ public final class Constants {
         public static final boolean kFrontRightDriveEncoderReversed = false;
         public static final boolean kBackRightDriveEncoderReversed = false;
 
-        public static final int kFrontLeftDriveAbsoluteEncoderPort = 0;
-        public static final int kBackLeftDriveAbsoluteEncoderPort = 2;
-        public static final int kFrontRightDriveAbsoluteEncoderPort = 1;
-        public static final int kBackRightDriveAbsoluteEncoderPort = 3;
+        public static final int kFrontLeftDriveAbsoluteEncoderPort = 9;
+        public static final int kBackLeftDriveAbsoluteEncoderPort = 10;
+        public static final int kFrontRightDriveAbsoluteEncoderPort = 11;
+        public static final int kBackRightDriveAbsoluteEncoderPort = 12;
 
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
         public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
@@ -91,6 +92,8 @@ public final class Constants {
         public static final double kPXController = 1.5;
         public static final double kPYController = 1.5;
         public static final double kPThetaController = 3;
+        public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
+            kMaxAccelerationMetersPerSecondSquared, kMaxAngularAccelerationRadiansPerSecondSquared);
     }
 
     public static final class OIConstants {
