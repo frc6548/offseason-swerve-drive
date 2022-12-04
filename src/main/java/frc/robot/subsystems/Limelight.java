@@ -91,7 +91,7 @@ public class Limelight {
      * Enables the limelight LED array. It is important to only enable when in use
      * to comply with FRC Game Rules.
      */
-    public static void Limelightenable() {
+    public static void Enable() {
         table.getEntry("ledMode").setNumber(0);
     }
 
@@ -99,7 +99,7 @@ public class Limelight {
      * Disables the limelight LED array. It is important to disable when not in use
      * to comply with FRC Game Rules.
      */
-    public static void Limelightdisable() {
+    public static void Disable() {
         table.getEntry("ledMode").setNumber(1);
     }
     
