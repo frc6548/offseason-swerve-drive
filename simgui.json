@@ -1,6 +1,9 @@
 {
   "HALProvider": {
     "Addressable LEDs": {
+      "0": {
+        "columns": 15
+      },
       "window": {
         "visible": true
       }
@@ -20,6 +23,11 @@
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/SmartDashboard/Auto Selector": "String Chooser",
       "/SmartDashboard/Scheduler": "Scheduler"
+    }
+  },
+  "NetworkTables": {
+    "limelight": {
+      "open": true
     }
   }
 }
