@@ -18,11 +18,11 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         m_robotContainer = new RobotContainer();
         
-        m_led = new AddressableLED(0);
-        m_ledBuffer = new AddressableLEDBuffer(60);
+        m_led = new AddressableLED(6);
+        m_ledBuffer = new AddressableLEDBuffer(150);
         m_led.setLength(m_ledBuffer.getLength());
-        m_led.setData(m_ledBuffer);
         m_led.start();
+        m_led.setData(m_ledBuffer);
     }
 
     @Override
@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
     @Override
     public void disabledInit() {
         RedLED();
+        m_led.setData(m_ledBuffer);
         Limelight.Enable();
     }
 
@@ -47,6 +48,7 @@ public class Robot extends TimedRobot {
             m_autonomousCommand.schedule();
 
             BlueLED();
+            m_led.setData(m_ledBuffer);
             Limelight.Disable();
         }
     }
@@ -61,6 +63,7 @@ public class Robot extends TimedRobot {
             m_autonomousCommand.cancel();
             
             GreenLED();
+            m_led.setData(m_ledBuffer);
             Limelight.Enable();
         }
     }
@@ -74,6 +77,7 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().cancelAll();
 
         WhiteLED();
+        m_led.setData(m_ledBuffer);
         Limelight.Enable();
     }
     
@@ -84,30 +88,25 @@ public class Robot extends TimedRobot {
     public void RedLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 255, 0, 0);
-            m_led.setData(m_ledBuffer);
         }}
 
     public void GreenLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 255, 0);
-            m_led.setData(m_ledBuffer);
         }}
 
     public void BlueLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 0, 255);
-            m_led.setData(m_ledBuffer);
         }}
 
     public void BlackLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 0, 0);
-            m_led.setData(m_ledBuffer);
         }}
 
     public void WhiteLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 255, 255, 255);
-            m_led.setData(m_ledBuffer);
         }}
 }
