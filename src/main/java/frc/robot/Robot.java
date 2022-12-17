@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.Limelight;
@@ -47,7 +48,7 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.schedule();
 
-            BlueLED();
+            BlueFlashLED();
             m_led.setData(m_ledBuffer);
             Limelight.Disable();
         }
@@ -98,6 +99,7 @@ public class Robot extends TimedRobot {
     public void BlueLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 0, 255);
+            
         }}
 
     public void BlackLED() {
@@ -109,4 +111,10 @@ public class Robot extends TimedRobot {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 255, 255, 255);
         }}
+
+        public void BlueFlashLED() {
+            double t = Timer.getFPGATimestamp();
+            for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+                      m_ledBuffer.setRGB(i, 0, 0, (int) (255*(Math.cos(t)*0.5+0.5)));
+            }}
 }
