@@ -4,16 +4,16 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.Limelight;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
+import frc.robot.subsystems.Limelight;
 
 public class Robot extends TimedRobot {
-    private AddressableLED m_led;
-    private AddressableLEDBuffer m_ledBuffer;
-
     private Command m_autonomousCommand;
     private RobotContainer m_robotContainer;
+
+    private AddressableLED m_led;
+    private AddressableLEDBuffer m_ledBuffer;
 
     @Override
     public void robotInit() {
@@ -24,6 +24,7 @@ public class Robot extends TimedRobot {
         m_led.setLength(m_ledBuffer.getLength());
         m_led.start();
         m_led.setData(m_ledBuffer);
+        
     }
 
     @Override
@@ -35,7 +36,7 @@ public class Robot extends TimedRobot {
     public void disabledInit() {
         RedLED();
         m_led.setData(m_ledBuffer);
-        Limelight.Enable();
+            Limelight.Enable();
     }
 
     @Override
@@ -50,7 +51,7 @@ public class Robot extends TimedRobot {
 
             BlueFlashLED();
             m_led.setData(m_ledBuffer);
-            Limelight.Disable();
+                Limelight.Disable();
         }
     }
 
@@ -65,7 +66,7 @@ public class Robot extends TimedRobot {
             
             GreenLED();
             m_led.setData(m_ledBuffer);
-            Limelight.Enable();
+                Limelight.Enable();
         }
     }
 
@@ -79,7 +80,7 @@ public class Robot extends TimedRobot {
 
         WhiteLED();
         m_led.setData(m_ledBuffer);
-        Limelight.Enable();
+            Limelight.Enable();
     }
     
     @Override
@@ -89,32 +90,38 @@ public class Robot extends TimedRobot {
     public void RedLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 255, 0, 0);
-        }}
+        }
+    }
 
     public void GreenLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 255, 0);
-        }}
+        }
+    }
 
     public void BlueLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 0, 255);
             
-        }}
+        }
+    }
 
     public void BlackLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 0, 0, 0);
-        }}
+        }
+    }
 
     public void WhiteLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, 255, 255, 255);
-        }}
+        }
+    }
 
-        public void BlueFlashLED() {
-            double t = Timer.getFPGATimestamp();
-            for (var i = 0; i < m_ledBuffer.getLength(); i++) {
-                      m_ledBuffer.setRGB(i, 0, 0, (int) (255*(Math.cos(t)*0.5+0.5)));
-            }}
+    public void BlueFlashLED() {
+        double t = Timer.getFPGATimestamp();
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+            m_ledBuffer.setRGB(i, 0, 0, (int) (255*(Math.cos(t)*0.5+0.5)));
+            }
+        }
 }
