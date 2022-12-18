@@ -43,7 +43,6 @@ public class RobotContainer {
     private void initializeAutoChooser() {
         m_autoChooser.setDefaultOption("Do Nothing", new WaitCommand(0)); 
         m_autoChooser.addOption("5 Ball Auto No Stop", new FiveBallAutoNoStop(swerveSubsystem));
-    
         SmartDashboard.putData("Auto Selector", m_autoChooser); 
     
       }

@@ -21,9 +21,9 @@ public final class Constants {
     public static final class DriveConstants {
 
         public static final double kTrackWidth = Units.inchesToMeters(26);
-        // Distance between right and left wheels
+        // distance between right and left wheels
         public static final double kWheelBase = Units.inchesToMeters(29);
-        // Distance between front and back wheels
+        // distance between front and back wheels
         public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
                 new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -37,7 +37,6 @@ public final class Constants {
                 public static final double kP_Theta = 8;
                 public static final double kD_Theta = 0;
 
-        // CAN ports that are defined in our actual robot code
         public static final int kFrontLeftDriveMotorPort = 2;
         public static final int kBackLeftDriveMotorPort = 1;
         public static final int kFrontRightDriveMotorPort = 3;
@@ -68,10 +67,10 @@ public final class Constants {
         public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
         public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
-        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0 * Math.PI / 180; // degrees * pi / 180 converts degrees to radians
-        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 0 * Math.PI / 180;
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0 * Math.PI / 180;
-        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 0 * Math.PI / 180;
+        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = -Math.toRadians(-0); // set later
+        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = -Math.toRadians(-0);
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = -Math.toRadians(-0);
+        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = -Math.toRadians(-0);
 
         public static final double kPhysicalMaxSpeedMetersPerSecond = 14.5/3.28084;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
