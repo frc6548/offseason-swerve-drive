@@ -66,6 +66,8 @@ public class SwerveSubsystem extends SubsystemBase {
     private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics,
             new Rotation2d(0));
 
+    public Object setModuleStates;
+
     public SwerveSubsystem() {
         new Thread(() -> {
             try {

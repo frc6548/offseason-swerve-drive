@@ -24,7 +24,6 @@ public class Robot extends TimedRobot {
         m_led.setLength(m_ledBuffer.getLength());
         m_led.start();
         m_led.setData(m_ledBuffer);
-        
     }
 
     @Override
@@ -40,8 +39,7 @@ public class Robot extends TimedRobot {
     }
 
     @Override
-    public void disabledPeriodic() {
-    }
+    public void disabledPeriodic() {}
 
     @Override
     public void autonomousInit() {
@@ -71,8 +69,7 @@ public class Robot extends TimedRobot {
     }
 
     @Override
-    public void teleopPeriodic() {
-    }
+    public void teleopPeriodic() {}
 
     @Override
     public void testInit() {
@@ -84,8 +81,7 @@ public class Robot extends TimedRobot {
     }
     
     @Override
-    public void testPeriodic() {
-    }
+    public void testPeriodic() {}
 
     public void RedLED() {
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
